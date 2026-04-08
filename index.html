@@ -540,10 +540,14 @@ function addScanLine() {
   scanCount++;
   statusEl.textContent = `${scanCount} events | ${repos.length} repos active`;
 
-  const delay = 800 + Math.random() * 2200;
+  const delay = 300 + Math.random() * 700;
   setTimeout(addScanLine, delay);
 }
 addScanLine();
+// B1-B8 full speed burst — fire 3 lines immediately on load
+setTimeout(addScanLine, 100);
+setTimeout(addScanLine, 250);
+setTimeout(addScanLine, 400);
 
 // ══ @MATHBOARD DETERMINISTIC ENGINE ══
 // Numbers are seeded from launch epoch — same second = same number worldwide
@@ -603,8 +607,8 @@ function tickDeterministic() {
 
 // Initialize immediately with correct values
 tickDeterministic();
-// Update every 1.5s — smooth, live feel
-setInterval(tickDeterministic, 1500);
+// FULL SPEED — blasters at 100% capacity
+setInterval(tickDeterministic, 1000);
 
 // ── BLINK ANIMATION ──
 const blinkStyle = document.createElement('style');
@@ -679,7 +683,7 @@ function updateEngagement() {
   if (bk) bk.textContent = e.bookmarks.toLocaleString();
 }
 updateEngagement();
-setInterval(updateEngagement, 30000);
+setInterval(updateEngagement, 5000);
 </script>
 </body>
 </html>
