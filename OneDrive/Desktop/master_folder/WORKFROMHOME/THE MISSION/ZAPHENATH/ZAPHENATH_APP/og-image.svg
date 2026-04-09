@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
+  <rect width="1200" height="630" fill="#0F0F0E"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#C41C1C"/>
+  <rect x="0" y="626" width="1200" height="4" fill="#C41C1C"/>
+  <text x="600" y="240" text-anchor="middle" font-family="monospace" font-size="96" font-weight="800" fill="#F8F7F4">ZAPH</text>
+  <text x="600" y="360" text-anchor="middle" font-family="monospace" font-size="96" font-weight="800" fill="#C41C1C">NEWS</text>
+  <text x="600" y="450" text-anchor="middle" font-family="monospace" font-size="28" fill="#888">24/7 Security Intelligence Broadcast</text>
+  <text x="600" y="510" text-anchor="middle" font-family="monospace" font-size="22" fill="#555">Powered by ZaphScore · zaphenath.app</text>
+</svg>

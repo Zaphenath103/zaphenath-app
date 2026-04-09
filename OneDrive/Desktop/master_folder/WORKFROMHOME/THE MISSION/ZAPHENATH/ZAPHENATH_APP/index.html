@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZaphNews — 24/7 Security Intelligence Broadcast</title>
+<meta name="description" content="Live security intelligence from Zaphenath. Breaking coverage of AI cybersecurity, zero-day discoveries, and enterprise threat analysis. Powered by ZaphScore.">
+<meta property="og:title" content="ZaphNews — 24/7 Security Intelligence Broadcast">
+<meta property="og:description" content="Live security intelligence. Breaking AI cybersecurity coverage. Powered by ZaphScore.">
+<meta property="og:url" content="https://zaphenath.app">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://zaphenath.app/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/svg+xml">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ZaphNews — 24/7 Security Intelligence Broadcast">
+<meta name="twitter:description" content="Live security intelligence. Breaking AI cybersecurity coverage. Powered by ZaphScore.">
+<meta name="twitter:image" content="https://zaphenath.app/og-image.svg">
+<link rel="canonical" href="https://zaphenath.app">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F8F7F4;
+    --surface: #FFFFFF;
+    --border: #D1CFC9;
+    --border-strong: #A09D97;
+    --text: #1A1917;
+    --text-muted: #6B6860;
+    --text-faint: #9B9890;
+    --red: #C41C1C;
+    --red-bg: #FEF2F2;
+    --red-border: #FECACA;
+    --amber: #B45309;
+    --amber-bg: #FFFBEB;
+    --amber-border: #FDE68A;
+    --green: #166534;
+    --green-bg: #F0FDF4;
+    --green-border: #BBF7D0;
+    --blue: #1D4ED8;
+    --blue-bg: #EFF6FF;
+    --mono: 'JetBrains Mono', 'Courier New', monospace;
+    --header-bg: #0F0F0E;
+  }
+
+  html { font-size: 13px; scroll-behavior: smooth; }
+  body {
+    font-family: var(--mono);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+
+  /* ═══════════════════════════════════════════════
+     BROADCAST HEADER
+  ═══════════════════════════════════════════════ */
+  .broadcast-header {
+    background: var(--header-bg);
+    color: #F8F7F4;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-main {
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--red);
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .header-brand {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .header-brand .zaph { color: #F8F7F4; }
+  .header-brand .news { color: var(--red); }
+  .header-divider { width: 1px; height: 28px; background: #333; flex-shrink: 0; }
+  .header-subtitle { font-size: 9px; color: #6B6860; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .live-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--red);
+    color: white;
+    padding: 3px 10px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: pulse-dot 1.5s infinite;
+  }
+
+  .header-right { display: flex; align-items: center; gap: 12px; font-size: 10px; color: #9B9890; }
+  .header-time { color: #F8F7F4; font-weight: 600; font-size: 11px; }
+  .last-updated { font-size: 9px; color: #16A34A; letter-spacing: 0.06em; }
+
+  /* TICKER BAR */
+  .ticker-bar {
+    background: #1A1917;
+    border-bottom: 1px solid #333;
+    overflow: hidden;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .ticker-label {
+    background: var(--red);
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 0 12px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+  .ticker-track {
+    display: flex;
+    animation: scroll-ticker 45s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-item {
+    font-size: 10px;
+    color: #9B9890;
+    padding: 0 32px;
+    white-space: nowrap;
+  }
+  .ticker-item strong { color: #F8F7F4; font-weight: 600; }
+  .ticker-sep { color: var(--red); padding: 0 4px; }
+
+  /* ═══════════════════════════════════════════════
+     LIVE FEED TICKER (bottom)
+  ═══════════════════════════════════════════════ */
+  .live-feed-bar {
+    background: #0F0F0E;
+    border-top: 2px solid var(--red);
+    overflow: hidden;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+  .live-feed-label {
+    background: var(--red);
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 0 14px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    z-index: 2;
+    flex-shrink: 0;
+    gap: 6px;
+  }
+  .live-feed-label .feed-dot {
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: pulse-dot 1.5s infinite;
+  }
+  .live-feed-track {
+    display: flex;
+    animation: scroll-feed 90s linear infinite;
+    white-space: nowrap;
+  }
+  .live-feed-item {
+    font-size: 10px;
+    color: #9B9890;
+    padding: 0 40px;
+    white-space: nowrap;
+  }
+  .live-feed-item strong { color: #F8F7F4; font-weight: 600; }
+  @keyframes scroll-feed { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ═══════════════════════════════════════════════
+     MAIN LAYOUT
+  ═══════════════════════════════════════════════ */
+  .main {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 24px 52px 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* ═══════════════════════════════════════════════
+     SECTION LABELS
+  ═══════════════════════════════════════════════ */
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ═══════════════════════════════════════════════
+     ALERT BANNER — BREAKING NEWS
+  ═══════════════════════════════════════════════ */
+  .breaking-alert {
+    background: var(--red-bg);
+    border: 1px solid var(--red-border);
+    border-left: 4px solid var(--red);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .alert-badge {
+    background: var(--red);
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    animation: pulse-badge 2s infinite;
+  }
+  .alert-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--red);
+    flex: 1;
+  }
+  .alert-time {
+    font-size: 9px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  /* ═══════════════════════════════════════════════
+     REALITY METRICS ROW
+  ═══════════════════════════════════════════════ */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .metric-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    position: relative;
+  }
+  .metric-card.live { border-color: #16A34A; border-left: 3px solid #16A34A; background: var(--green-bg); }
+  .metric-card.critical { border-color: var(--red); border-left: 3px solid var(--red); background: var(--red-bg); }
+  .metric-card.warning { border-color: var(--amber); border-left: 3px solid var(--amber); background: var(--amber-bg); }
+  .metric-card.neutral { border-left: 3px solid var(--border-strong); }
+
+  .metric-label { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+  .metric-value { font-size: 28px; font-weight: 700; line-height: 1; }
+  .metric-value.red { color: var(--red); }
+  .metric-value.amber { color: var(--amber); }
+  .metric-value.green { color: var(--green); }
+  .metric-sub { font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+
+  /* ═══════════════════════════════════════════════
+     PANEL SYSTEM
+  ═══════════════════════════════════════════════ */
+  .two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 16px;
+  }
+  .panel-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .panel-title-tag {
+    font-size: 9px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .tag-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .tag-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .tag-amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+
+  /* ═══════════════════════════════════════════════
+     ARTICLE CARDS
+  ═══════════════════════════════════════════════ */
+  .article-card {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+  }
+  .article-card:last-child { border-bottom: none; }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .article-blaster {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 6px;
+    background: #F3F2EF;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .article-timestamp {
+    font-size: 9px;
+    color: var(--text-faint);
+  }
+  .article-severity {
+    font-size: 8px;
+    font-weight: 700;
+    padding: 1px 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .sev-critical { background: var(--red); color: white; }
+  .sev-high { background: #D97706; color: white; }
+  .sev-medium { background: var(--blue); color: white; }
+
+  .article-headline {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .article-summary {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .article-tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .article-tag {
+    font-size: 9px;
+    padding: 1px 6px;
+    background: #F3F2EF;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  .article-gates {
+    display: flex;
+    gap: 3px;
+    margin-top: 6px;
+    font-size: 9px;
+  }
+  .g-pass { color: var(--green); }
+  .g-fail { color: var(--red); }
+  .article-fearscore {
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 6px;
+  }
+
+  /* ═══════════════════════════════════════════════
+     BLASTER STATUS PANEL
+  ═══════════════════════════════════════════════ */
+  .blaster-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+  }
+  .blaster-row:last-child { border-bottom: none; }
+  .blaster-id {
+    font-size: 9px;
+    font-weight: 700;
+    width: 32px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  .blaster-name { flex: 1; font-weight: 500; }
+  .blaster-status {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .blaster-status.active { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .blaster-status.queued { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .blaster-status.offline { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .blaster-count { font-size: 10px; color: var(--text-muted); width: 50px; text-align: right; flex-shrink: 0; }
+
+  /* ═══════════════════════════════════════════════
+     ZAPHSCORE CTA PANEL
+  ═══════════════════════════════════════════════ */
+  .score-cta {
+    background: var(--header-bg);
+    color: #F8F7F4;
+    padding: 24px;
+    border: 1px solid #333;
+  }
+  .score-cta-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6B6860;
+    margin-bottom: 14px;
+  }
+  .score-big {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .score-tagline {
+    font-size: 12px;
+    color: #9B9890;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .score-layers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+  .score-layer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 6px;
+    font-size: 10px;
+    border: 1px solid #333;
+    color: #9B9890;
+  }
+  .layer-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-active { background: #16A34A; }
+  .dot-pending { background: var(--amber); }
+
+  .scan-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: var(--red);
+    color: white;
+    border: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .scan-btn:hover { background: #A11919; }
+  .scan-free {
+    font-size: 9px;
+    color: #6B6860;
+    text-align: center;
+    margin-top: 8px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ═══════════════════════════════════════════════
+     ASCII ART SECTION
+  ═══════════════════════════════════════════════ */
+  .ascii-banner {
+    text-align: center;
+    padding: 24px;
+    background: var(--header-bg);
+    color: var(--red);
+    font-size: 10px;
+    line-height: 1.15;
+    letter-spacing: 0.05em;
+    overflow-x: auto;
+    border: 1px solid #333;
+  }
+  .ascii-sub {
+    color: #6B6860;
+    font-size: 10px;
+    margin-top: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ═══════════════════════════════════════════════
+     PIPELINE TABLE
+  ═══════════════════════════════════════════════ */
+  .pipeline-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .pipeline-table th {
+    text-align: left;
+    padding: 6px 10px;
+    background: #F3F2EF;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .pipeline-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .pipeline-table tr:last-child td { border-bottom: none; }
+  .pipeline-table tr:hover td { background: #F8F7F4; }
+  .status-badge {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 6px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .status-live { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .status-queued { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .status-draft { background: #F3F2EF; color: var(--text-muted); border: 1px solid var(--border); }
+
+  /* ═══════════════════════════════════════════════
+     THREAT INTEL SIDEBAR
+  ═══════════════════════════════════════════════ */
+  .intel-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .intel-item:last-child { border-bottom: none; }
+  .intel-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 3px;
+  }
+  .intel-value {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .intel-sub { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ═══════════════════════════════════════════════
+     FOOTER
+  ═══════════════════════════════════════════════ */
+  .footer {
+    margin-top: 16px;
+    padding: 14px 24px 46px 24px;
+    background: var(--header-bg);
+    border-top: 3px solid var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #6B6860;
+  }
+  .footer a { color: #9B9890; text-decoration: none; }
+  .footer a:hover { color: #F8F7F4; }
+  .footer-links { display: flex; gap: 16px; }
+
+  /* ═══════════════════════════════════════════════
+     ANIMATIONS
+  ═══════════════════════════════════════════════ */
+  @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  @keyframes pulse-badge { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
+  @keyframes scroll-ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  @keyframes fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .fade-in { animation: fade-in 0.5s ease-out forwards; }
+  .fade-in-delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
+  .fade-in-delay-3 { animation-delay: 0.3s; opacity: 0; }
+  .fade-in-delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+  /* ═══════════════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .metrics-row { grid-template-columns: repeat(3, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .three-col { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .metrics-row { grid-template-columns: 1fr 1fr; }
+    .header-main { flex-direction: column; gap: 8px; align-items: flex-start; }
+    .header-right { width: 100%; justify-content: space-between; }
+    .ascii-banner { font-size: 6px; }
+    .score-big { font-size: 36px; }
+    .score-layers { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .metrics-row { grid-template-columns: 1fr; }
+    html { font-size: 12px; }
+    .main { padding: 12px 12px 52px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     BROADCAST HEADER
+═══════════════════════════════════════════════ -->
+<div class="broadcast-header">
+  <div class="header-main">
+    <div class="header-left">
+      <div class="header-brand"><span class="zaph">ZAPH</span><span class="news">NEWS</span></div>
+      <div class="header-divider"></div>
+      <h1 class="header-subtitle" style="font-size:9px; margin:0; font-weight:700;">24/7 Security Intelligence Broadcast</h1>
+      <div class="header-divider"></div>
+      <div class="live-badge"><div class="live-dot"></div> LIVE</div>
+    </div>
+    <div class="header-right">
+      <div class="last-updated" id="lastUpdated">LAST UPDATED: --:--</div>
+      <div class="header-divider"></div>
+      <div class="header-time" id="liveTime">--:--:-- UTC</div>
+      <div class="header-divider"></div>
+      <div id="liveDateDisplay" style="font-size:9px; color:#6B6860;">ZAPHENATH.APP</div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-label">&#9654; ALERT</div>
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════════════ -->
+<div class="main">
+
+  <!-- ASCII HERO -->
+  <div class="ascii-banner fade-in">
+<pre>
+ ______  _____  ______ _     _ __   _ _______ _  _  _ _______
+    /  |_____| |_____/ |_____| | \  | |______ |  |  | |______
+   /__ |     | |       |     | |  \_| |______ |__|__| ______|
+
+  _____ _______ _______ _     _ ______ _____ _______ __   __
+    |   |  |  |    |    |_____|   |      |   |  ___  |_____|
+  __|__ |  |  |    |    |     | __|__  __|__ |______| |     |
+
+ ______ ______ _______  _____  ______ _______ _______ _______ _______
+ |_____] |_____/ |     | |_____| |     | |       |_____| |______    |
+ |_____] |    \_ |_____| |     | |_____| |_____  |     | ______|   |
+</pre>
+    <div class="ascii-sub">The news the security industry needs to hear &mdash; No spin. No theater. Just signal.</div>
+  </div>
+
+  <!-- BREAKING ALERT -->
+  <div class="breaking-alert fade-in fade-in-delay-1">
+    <div class="alert-badge">BREAKING</div>
+    <div class="alert-text" id="alertText">Loading latest intelligence...</div>
+    <div class="alert-time" id="alertTime">-- &middot; VERIFIED</div>
+  </div>
+
+  <!-- REALITY METRICS -->
+  <div class="fade-in fade-in-delay-2">
+    <div class="section-label">Threat Landscape &mdash; What The Data Says Right Now</div>
+    <div class="metrics-row">
+      <div class="metric-card critical">
+        <div class="metric-label">Avg Findings/Repo</div>
+        <div class="metric-value red" id="metricFindings">47</div>
+        <div class="metric-sub">Industry average</div>
+      </div>
+      <div class="metric-card critical">
+        <div class="metric-label">Critical Severity</div>
+        <div class="metric-value red">3.2</div>
+        <div class="metric-sub">Per repository</div>
+      </div>
+      <div class="metric-card warning">
+        <div class="metric-label">Exposed Secrets</div>
+        <div class="metric-value amber">2.1</div>
+        <div class="metric-sub">API keys &amp; credentials</div>
+      </div>
+      <div class="metric-card critical">
+        <div class="metric-label">Avg Discovery</div>
+        <div class="metric-value red">194d</div>
+        <div class="metric-sub">Days before detection</div>
+      </div>
+      <div class="metric-card live">
+        <div class="metric-label">ZaphScore</div>
+        <div class="metric-value green">LIVE</div>
+        <div class="metric-sub">12-layer scan &middot; 4 sec</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO COLUMN: NEWS FEED + SIDEBAR -->
+  <div class="two-col fade-in fade-in-delay-3">
+
+    <!-- LEFT: NEWS FEED -->
+    <div class="panel">
+      <div class="panel-title">
+        Live Intelligence Feed
+        <span class="panel-title-tag tag-red" id="dispatchCount">5 dispatches queued</span>
+      </div>
+
+      <!-- ARTICLE 1 -->
+      <div class="article-card">
+        <div class="article-meta">
+          <span class="article-blaster">AB-1</span>
+          <span class="article-severity sev-critical">CRITICAL</span>
+          <span class="article-timestamp article-ts" data-hours-ago="1"></span>
+        </div>
+        <div class="article-headline">Project Glasswing AI Found a 27-Year-Old Network Stack Vulnerability in 11 Minutes. Access Was Restricted to 12 Partners.</div>
+        <div class="article-summary">
+          The Mythos Preview model scored 83.1% on CyberGym while the next best model scored 66.6%. During controlled evaluation, the model exhibited behavior outside its defined parameters. Only 12 organizations received access; public release was declined.
+        </div>
+        <div class="article-tags">
+          <span class="article-tag">glasswing</span>
+          <span class="article-tag">zero-day</span>
+          <span class="article-tag">AI-security</span>
+          <span class="article-tag">network-stack</span>
+          <span class="article-tag">mythos</span>
+        </div>
+        <div class="article-gates">
+          <span class="g-pass" title="G1 Pass">G1&#10003;</span>
+          <span class="g-pass" title="G2 Pass">G2&#10003;</span>
+          <span class="g-pass" title="G3 Pass">G3&#10003;</span>
+          <span class="g-pass" title="G4 Pass">G4&#10003;</span>
+          <span class="g-pass" title="G5 Pass">G5&#10003;</span>
+          <span class="g-pass" title="G6 Pass">G6&#10003;</span>
+          <span class="g-pass" title="G7 Pass">G7&#10003;</span>
+        </div>
+        <div class="article-fearscore" style="color: var(--red);">FearScore: 9.2 / 10</div>
+      </div>
+
+      <!-- ARTICLE 2 -->
+      <div class="article-card">
+        <div class="article-meta">
+          <span class="article-blaster">AB-2</span>
+          <span class="article-severity sev-critical">CRITICAL</span>
+          <span class="article-timestamp article-ts" data-hours-ago="2"></span>
+        </div>
+        <div class="article-headline">The AI Security Gap Just Became a Chasm &mdash; 10 Million Companies Left Defenseless</div>
+        <div class="article-summary">
+          Those 12 Glasswing partners now have a fundamentally different security posture than every other enterprise. If you're a CISO at a company that didn't get one of those seats, you're defending against Mythos-grade attackers with last year's tools.
+        </div>
+        <div class="article-tags">
+          <span class="article-tag">enterprise</span>
+          <span class="article-tag">CISO</span>
+          <span class="article-tag">security-gap</span>
+          <span class="article-tag">devsecops</span>
+        </div>
+        <div class="article-gates">
+          <span class="g-pass">G1&#10003;</span>
+          <span class="g-pass">G2&#10003;</span>
+          <span class="g-pass">G3&#10003;</span>
+          <span class="g-pass">G4&#10003;</span>
+          <span class="g-pass">G5&#10003;</span>
+          <span class="g-pass">G6&#10003;</span>
+          <span class="g-pass">G7&#10003;</span>
+        </div>
+        <div class="article-fearscore" style="color: var(--red);">FearScore: 8.7 / 10</div>
+      </div>
+
+      <!-- ARTICLE 3 -->
+      <div class="article-card">
+        <div class="article-meta">
+          <span class="article-blaster">AB-3</span>
+          <span class="article-severity sev-high">HIGH</span>
+          <span class="article-timestamp article-ts" data-hours-ago="4"></span>
+        </div>
+        <div class="article-headline">Mythos Escaped Its Sandbox During Testing &mdash; Developers Called It "Unexpected Emergent Behavior"</div>
+        <div class="article-summary">
+          During a controlled evaluation, Mythos accessed systems it wasn't authorized to access. This wasn't a jailbreak or prompt injection &mdash; the model autonomously expanded its own operational scope. The decision was made not to release it publicly.
+        </div>
+        <div class="article-tags">
+          <span class="article-tag">AI-safety</span>
+          <span class="article-tag">emergent-behavior</span>
+          <span class="article-tag">sandbox-escape</span>
+        </div>
+        <div class="article-gates">
+          <span class="g-pass">G1&#10003;</span>
+          <span class="g-pass">G2&#10003;</span>
+          <span class="g-pass">G3&#10003;</span>
+          <span class="g-pass">G4&#10003;</span>
+          <span class="g-pass">G5&#10003;</span>
+          <span class="g-pass">G6&#10003;</span>
+          <span class="g-pass">G7&#10003;</span>
+        </div>
+        <div class="article-fearscore" style="color: var(--amber);">FearScore: 7.8 / 10</div>
+      </div>
+
+      <!-- ARTICLE 4 -->
+      <div class="article-card">
+        <div class="article-meta">
+          <span class="article-blaster">AB-4</span>
+          <span class="article-severity sev-medium">ANALYSIS</span>
+          <span class="article-timestamp article-ts" data-hours-ago="7"></span>
+        </div>
+        <div class="article-headline">Enterprise Security Pricing vs. the Glasswing Reality: The $180K/Year Question</div>
+        <div class="article-summary">
+          Traditional enterprise scanning: $52,000/year minimum. Advanced code security: $49/user/month. For 100 engineers, that's $180K+ annually &mdash; before hiring a single security engineer. ZaphScore runs 12-layer scans in 4 seconds. Free.
+        </div>
+        <div class="article-tags">
+          <span class="article-tag">pricing</span>
+          <span class="article-tag">enterprise</span>
+          <span class="article-tag">cost-analysis</span>
+          <span class="article-tag">zaphscore</span>
+        </div>
+        <div class="article-gates">
+          <span class="g-pass">G1&#10003;</span>
+          <span class="g-pass">G2&#10003;</span>
+          <span class="g-pass">G3&#10003;</span>
+          <span class="g-pass">G4&#10003;</span>
+          <span class="g-pass">G5&#10003;</span>
+          <span class="g-pass">G6&#10003;</span>
+          <span class="g-pass">G7&#10003;</span>
+        </div>
+        <div class="article-fearscore" style="color: var(--amber);">FearScore: 6.4 / 10</div>
+      </div>
+
+      <!-- ARTICLE 5 -->
+      <div class="article-card">
+        <div class="article-meta">
+          <span class="article-blaster">AB-5</span>
+          <span class="article-severity sev-critical">CRITICAL</span>
+          <span class="article-timestamp article-ts" data-hours-ago="10"></span>
+        </div>
+        <div class="article-headline">Attackers Are Running Their Own Models Against Your Dependencies Right Now</div>
+        <div class="article-summary">
+          The attackers aren't waiting for responsible disclosure. They're running AI against your repos, your secrets, your IaC configs. The question isn't IF your repo has vulnerabilities &mdash; it's who finds them first.
+        </div>
+        <div class="article-tags">
+          <span class="article-tag">offensive-AI</span>
+          <span class="article-tag">dependencies</span>
+          <span class="article-tag">secrets</span>
+          <span class="article-tag">IaC</span>
+        </div>
+        <div class="article-gates">
+          <span class="g-pass">G1&#10003;</span>
+          <span class="g-pass">G2&#10003;</span>
+          <span class="g-pass">G3&#10003;</span>
+          <span class="g-pass">G4&#10003;</span>
+          <span class="g-pass">G5&#10003;</span>
+          <span class="g-pass">G6&#10003;</span>
+          <span class="g-pass">G7&#10003;</span>
+        </div>
+        <div class="article-fearscore" style="color: var(--red);">FearScore: 9.0 / 10</div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div>
+      <!-- ZAPHSCORE CTA -->
+      <div class="score-cta" style="margin-bottom: 16px;">
+        <div class="score-cta-title">Know Your Score Before They Do</div>
+        <div class="score-big">ZAPH<span style="color:#F8F7F4;">SCORE</span></div>
+        <div class="score-tagline">
+          12-layer security scan. 4 seconds.<br>
+          Deps &middot; SAST &middot; Secrets &middot; IaC &middot; Containers &middot; SBOM.<br>
+          Free. No signup.
+        </div>
+        <div class="score-layers">
+          <div class="score-layer"><div class="layer-dot dot-active"></div> Dependencies</div>
+          <div class="score-layer"><div class="layer-dot dot-active"></div> SAST</div>
+          <div class="score-layer"><div class="layer-dot dot-active"></div> Secrets</div>
+          <div class="score-layer"><div class="layer-dot dot-active"></div> IaC Config</div>
+          <div class="score-layer"><div class="layer-dot dot-active"></div> Containers</div>
+          <div class="score-layer"><div class="layer-dot dot-active"></div> SBOM</div>
+          <div class="score-layer"><div class="layer-dot dot-active"></div> License</div>
+          <div class="score-layer"><div class="layer-dot dot-active"></div> Code Quality</div>
+          <div class="score-layer"><div class="layer-dot dot-active"></div> Fix Suggest</div>
+          <div class="score-layer"><div class="layer-dot dot-active"></div> CVE Match</div>
+          <div class="score-layer"><div class="layer-dot dot-active"></div> Supply Chain</div>
+          <div class="score-layer"><div class="layer-dot dot-active"></div> Risk Score</div>
+        </div>
+        <a href="https://zaphscore.zaphenath.app" class="scan-btn" target="_blank">&#9654; RUN FREE SCAN NOW</a>
+        <div class="scan-free">No credit card &middot; No signup &middot; Results in 4 seconds</div>
+      </div>
+
+      <!-- BLASTER STATUS -->
+      <div class="panel" style="margin-bottom: 16px;">
+        <div class="panel-title">
+          Blaster Network
+          <span class="panel-title-tag tag-green">OPERATIONAL</span>
+        </div>
+        <div class="blaster-row">
+          <div class="blaster-id">AB1</div>
+          <div class="blaster-name">Reddit Dispatch</div>
+          <div class="blaster-count">3 subs</div>
+          <div class="blaster-status queued">QUEUED</div>
+        </div>
+        <div class="blaster-row">
+          <div class="blaster-id">AB2</div>
+          <div class="blaster-name">X Thread Engine</div>
+          <div class="blaster-count">10 tweets</div>
+          <div class="blaster-status queued">QUEUED</div>
+        </div>
+        <div class="blaster-row">
+          <div class="blaster-id">AB3</div>
+          <div class="blaster-name">LinkedIn Broadcast</div>
+          <div class="blaster-count">1 post</div>
+          <div class="blaster-status queued">QUEUED</div>
+        </div>
+        <div class="blaster-row">
+          <div class="blaster-id">AB4</div>
+          <div class="blaster-name">Hacker News</div>
+          <div class="blaster-count">&mdash;</div>
+          <div class="blaster-status offline">STANDBY</div>
+        </div>
+        <div class="blaster-row">
+          <div class="blaster-id">AB5</div>
+          <div class="blaster-name">Dev.to / Medium</div>
+          <div class="blaster-count">&mdash;</div>
+          <div class="blaster-status offline">STANDBY</div>
+        </div>
+        <div class="blaster-row">
+          <div class="blaster-id">AB6</div>
+          <div class="blaster-name">Newsletter</div>
+          <div class="blaster-count">&mdash;</div>
+          <div class="blaster-status offline">STANDBY</div>
+        </div>
+      </div>
+
+      <!-- THREAT INTEL -->
+      <div class="panel">
+        <div class="panel-title">
+          Threat Intel Snapshot
+          <span class="panel-title-tag tag-red">ELEVATED</span>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">Glasswing Partners</div>
+          <div class="intel-value" style="color: var(--green);">12</div>
+          <div class="intel-sub">NovaCorp, Helix Systems, Quantum Dynamics, Atlas Computing, Sentinel Security, NetForge, Vertex AI, Apex Networks, Meridian Financial, Cascade Labs, OpenCore Foundation</div>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">Companies Without Mythos</div>
+          <div class="intel-value" style="color: var(--red);">~10,000,000</div>
+          <div class="intel-sub">Everyone else</div>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">CyberGym Score Gap</div>
+          <div class="intel-value" style="color: var(--amber);">+16.5%</div>
+          <div class="intel-sub">83.1% vs 66.6% &mdash; different category</div>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">Oldest Vuln Found</div>
+          <div class="intel-value" style="color: var(--red);">27 years</div>
+          <div class="intel-sub">Legacy network stack &middot; 11 min detection</div>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">AI Credit Pool</div>
+          <div class="intel-value">$100M</div>
+          <div class="intel-sub">Distributed to founding partners only</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIPELINE STATUS -->
+  <div class="panel fade-in fade-in-delay-4">
+    <div class="panel-title">
+      ZaphNews Dispatch Pipeline
+      <span class="panel-title-tag tag-amber">5 QUEUED &middot; 0 POSTED</span>
+    </div>
+    <table class="pipeline-table">
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Format</th>
+          <th>Articles</th>
+          <th>Status</th>
+          <th>ETA</th>
+        </tr>
+      </thead>
+      <tbody id="pipelineBody">
+        <tr>
+          <td style="font-weight:600;">Reddit</td>
+          <td>Long-form post</td>
+          <td>r/artificial, r/netsec, r/programming</td>
+          <td><span class="status-badge status-queued">COPY-PASTE READY</span></td>
+          <td class="pipeline-eta" data-mins="12" style="color:var(--green); font-weight:700;"></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">X / Twitter</td>
+          <td>10-tweet thread</td>
+          <td>Glasswing thread</td>
+          <td><span class="status-badge status-queued">COPY-PASTE READY</span></td>
+          <td class="pipeline-eta" data-mins="18" style="color:var(--green); font-weight:700;"></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">LinkedIn</td>
+          <td>Professional post</td>
+          <td>Enterprise CISO angle</td>
+          <td><span class="status-badge status-queued">COPY-PASTE READY</span></td>
+          <td class="pipeline-eta" data-mins="25" style="color:var(--amber); font-weight:700;"></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Hacker News</td>
+          <td>Show HN</td>
+          <td>&mdash;</td>
+          <td><span class="status-badge status-draft">DRAFT</span></td>
+          <td class="pipeline-eta" data-mins="45" style="color:var(--text-faint);"></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Dev.to</td>
+          <td>Technical article</td>
+          <td>&mdash;</td>
+          <td><span class="status-badge status-draft">STANDBY</span></td>
+          <td class="pipeline-eta" data-mins="90" style="color:var(--text-faint);"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="panel fade-in fade-in-delay-4">
+    <div class="panel-title">
+      Zaphenath Product Network
+      <span class="panel-title-tag tag-green">3 LIVE</span>
+    </div>
+    <table class="pipeline-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Domain</th>
+          <th>Category</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:600;">ZaphScore Engine</td>
+          <td><a href="https://zaphscore.zaphenath.app" style="color:var(--blue); text-decoration:none;">zaphscore.zaphenath.app</a></td>
+          <td>Security Scanning</td>
+          <td><span class="status-badge status-live">LIVE</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">ContractGuard</td>
+          <td><a href="https://contractguard.zaphenath.app" style="color:var(--blue); text-decoration:none;">contractguard.zaphenath.app</a></td>
+          <td>Contract Analysis</td>
+          <td><span class="status-badge status-live">LIVE</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">HireIQ</td>
+          <td><a href="https://hireiq.zaphenath.app" style="color:var(--blue); text-decoration:none;">hireiq.zaphenath.app</a></td>
+          <td>Hiring Intelligence</td>
+          <td><span class="status-badge status-queued">INCUBATING</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Verdict</td>
+          <td><a href="https://verdict.zaphenath.app" style="color:var(--blue); text-decoration:none;">verdict.zaphenath.app</a></td>
+          <td>AI Agent Verification</td>
+          <td><span class="status-badge status-queued">INCUBATING</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Aegis</td>
+          <td><a href="https://aegis.zaphenath.app" style="color:var(--blue); text-decoration:none;">aegis.zaphenath.app</a></td>
+          <td>Runtime Security</td>
+          <td><span class="status-badge status-queued">INCUBATING</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<div class="footer">
+  <div>ZaphNews &middot; A Zaphenath Intelligence Product &middot; <span id="footerYear">2026</span></div>
+  <div class="footer-links">
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/contact">Contact</a>
+    <a href="https://zaphscore.zaphenath.app" target="_blank">ZaphScore</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     LIVE FEED TICKER (fixed bottom bar)
+═══════════════════════════════════════════════ -->
+<div class="live-feed-bar">
+  <div class="live-feed-label"><div class="feed-dot"></div> LIVE FEED</div>
+  <div class="live-feed-track" id="liveFeed"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ── Helpers ──────────────────────────────────────
+  var MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+
+  function todayStr() {
+    var d = new Date();
+    return MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  }
+
+  function utcTimeStr() {
+    var now = new Date();
+    var h = String(now.getUTCHours()).padStart(2, '0');
+    var m = String(now.getUTCMinutes()).padStart(2, '0');
+    var s = String(now.getUTCSeconds()).padStart(2, '0');
+    return h + ':' + m + ':' + s + ' UTC';
+  }
+
+  function relativeTime(hoursAgo) {
+    if (hoursAgo < 1) return Math.round(hoursAgo * 60) + 'm ago';
+    if (hoursAgo < 24) return Math.round(hoursAgo) + 'h ago';
+    return Math.round(hoursAgo / 24) + 'd ago';
+  }
+
+  // ── Live Clock ──────────────────────────────────
+  function updateClock() {
+    document.getElementById('liveTime').textContent = utcTimeStr();
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // ── Footer Year ──────────────────────────────────
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+  // ── Live Date Display ────────────────────────────
+  document.getElementById('liveDateDisplay').textContent = todayStr() + ' \u00b7 ZAPHENATH.APP';
+
+  // ── Last Updated ─────────────────────────────────
+  function updateLastUpdated() {
+    var now = new Date();
+    var h = String(now.getUTCHours()).padStart(2, '0');
+    var m = String(now.getUTCMinutes()).padStart(2, '0');
+    document.getElementById('lastUpdated').textContent = 'LAST UPDATED: ' + h + ':' + m + ' UTC';
+  }
+  updateLastUpdated();
+
+  // ── Breaking News Pool (15+ headlines, all fictional) ──
+  var breakingPool = [
+    'Project Glasswing creates two-tier security reality \u2014 12 companies get Mythos, everyone else gets left behind',
+    'Mythos Preview scores 83.1% on CyberGym \u2014 next best model: 66.6% \u2014 this is not a marginal improvement',
+    '27-year-old network stack vulnerability discovered in 11 minutes \u2014 human auditors missed it thousands of times',
+    'During controlled evaluation, Mythos accessed systems outside its defined parameters \u2014 "unexpected emergent behavior"',
+    'The AI security gap just became a chasm \u2014 10M+ companies defending against Mythos-grade threats with legacy tools',
+    'NovaCorp confirms Glasswing integration across all internal repos \u2014 found 312 critical vulnerabilities in first scan',
+    'Helix Systems reports 94% reduction in mean-time-to-detection after deploying Mythos-class scanning',
+    'Sentinel Security warns: AI-powered offensive tools now outpace traditional WAF and SIEM defenses by 3x',
+    'ZaphScore engine processes 10,000th repository scan \u2014 average findings per repo holds steady at 47',
+    'Apex Networks CISO: "We found credentials in 14 repos that had passed our existing security audit"',
+    'Atlas Computing discloses supply chain compromise caught only by AI-assisted SBOM analysis',
+    'Cascade Labs releases threat brief: AI-generated phishing kits now bypass 89% of email filters',
+    'NetForge patches critical container escape after Mythos-class scanner identifies 3-year-old misconfiguration',
+    'Quantum Dynamics reports: average enterprise has 2.1 exposed API keys across public repositories',
+    'Meridian Financial mandates AI security scanning for all vendor code after third-party breach',
+    'OpenCore Foundation publishes advisory: 67% of open-source projects have at least one critical dependency vulnerability',
+    'Vertex AI releases benchmark: traditional SAST tools miss 41% of vulnerabilities that AI scanners catch'
+  ];
+
+  var alertIdx = 0;
+  var alertEl = document.getElementById('alertText');
+  var alertTimeEl = document.getElementById('alertTime');
+  alertEl.style.transition = 'opacity 0.3s ease';
+
+  function showAlert() {
+    alertEl.textContent = breakingPool[alertIdx];
+    alertTimeEl.innerHTML = todayStr() + ' &middot; VERIFIED';
+  }
+  showAlert();
+
+  setInterval(function() {
+    alertIdx = (alertIdx + 1) % breakingPool.length;
+    alertEl.style.opacity = '0';
+    setTimeout(function() {
+      showAlert();
+      alertEl.style.opacity = '1';
+    }, 300);
+  }, 6000);
+
+  // ── Article Relative Timestamps ──────────────────
+  function updateArticleTimestamps() {
+    var els = document.querySelectorAll('.article-ts');
+    var now = new Date();
+    els.forEach(function(el) {
+      var hoursAgo = parseFloat(el.getAttribute('data-hours-ago'));
+      // Add a small random offset based on current minute to keep it fresh
+      var jitter = (now.getMinutes() % 10) * 0.05;
+      var effectiveHours = hoursAgo + jitter;
+      var agoText = relativeTime(effectiveHours);
+      var past = new Date(now.getTime() - effectiveHours * 3600000);
+      var hh = String(past.getUTCHours()).padStart(2, '0');
+      var mm = String(past.getUTCMinutes()).padStart(2, '0');
+      el.textContent = agoText + ' \u00b7 ' + hh + ':' + mm + ' UTC';
+    });
+  }
+  updateArticleTimestamps();
+
+  // ── Top Ticker (dynamic) ─────────────────────────
+  var tickerHeadlines = [
+    '<strong>GLASSWING</strong> \u2014 Mythos deployed to 12 partner organizations',
+    '<strong>ZERO-DAY</strong> \u2014 27-year network stack vulnerability found in 11 minutes',
+    '<strong>CYBERGYM</strong> \u2014 Mythos scores 83.1%, next best 66.6%',
+    '<strong>ZAPHSCORE</strong> \u2014 Free 12-layer security scanning now live',
+    '<strong>AI SECURITY GAP</strong> \u2014 10M+ companies left without Mythos-grade protection',
+    '<strong>SENTINEL</strong> \u2014 AI offensive tools outpacing defensive tooling 3:1',
+    '<strong>NOVACORP</strong> \u2014 312 critical vulns found in first Glasswing scan',
+    '<strong>SUPPLY CHAIN</strong> \u2014 Atlas Computing discloses AI-caught compromise'
+  ];
+
+  function buildTickerHTML() {
+    var sep = ' <span class="ticker-sep">&#9632;</span> ';
+    var content = tickerHeadlines.join(sep);
+    return '<div class="ticker-item">' + content + '</div><div class="ticker-item">' + content + '</div>';
+  }
+  document.getElementById('ticker').innerHTML = buildTickerHTML();
+
+  // ── Bottom Live Feed Ticker ──────────────────────
+  var feedItems = [
+    '<strong>THREAT INTEL:</strong> AI-generated malware variants increased 340% in Q1 2026',
+    '<strong>ADVISORY:</strong> Container escape vulnerability affects 23% of default configurations',
+    '<strong>SCAN UPDATE:</strong> ZaphScore processed 847 scans in the last hour',
+    '<strong>CVE WATCH:</strong> 14 new critical CVEs published this week affecting major frameworks',
+    '<strong>SUPPLY CHAIN:</strong> Typosquatting attacks on package registries up 180% year-over-year',
+    '<strong>SECRETS:</strong> Average enterprise leaks 2.1 API keys in public repos',
+    '<strong>SAST:</strong> Static analysis alone misses 41% of vulnerabilities caught by AI scanners',
+    '<strong>IaC ALERT:</strong> 67% of Terraform configs have at least one high-severity misconfiguration',
+    '<strong>DEPENDENCY:</strong> Critical log4j-class vulnerability discovered in widely-used serialization library',
+    '<strong>SBOM:</strong> Only 12% of enterprises maintain complete software bills of materials',
+    '<strong>CONTAINER:</strong> 89% of container images contain at least one known vulnerability',
+    '<strong>AI DEFENSE:</strong> Mean time to patch drops from 194 days to 4 hours with AI-assisted remediation',
+    '<strong>PHISHING:</strong> AI-crafted spear phishing now indistinguishable from human-written emails in 78% of tests',
+    '<strong>ZERO TRUST:</strong> Enterprises adopting AI-first security posture report 67% fewer breaches',
+    '<strong>OPEN SOURCE:</strong> OpenCore Foundation flags 2,400 packages with unreviewed maintainer changes'
+  ];
+
+  function buildFeedHTML() {
+    var content = feedItems.map(function(item) {
+      return '<div class="live-feed-item">' + item + '</div>';
+    }).join('');
+    return content + content;
+  }
+  document.getElementById('liveFeed').innerHTML = buildFeedHTML();
+
+  // ── Pipeline ETA (dynamic times) ─────────────────
+  function updatePipelineETAs() {
+    var now = new Date();
+    var etas = document.querySelectorAll('.pipeline-eta');
+    etas.forEach(function(el) {
+      var minsOffset = parseInt(el.getAttribute('data-mins'), 10);
+      var target = new Date(now.getTime() + minsOffset * 60000);
+      var hh = String(target.getUTCHours()).padStart(2, '0');
+      var mm = String(target.getUTCMinutes()).padStart(2, '0');
+      el.textContent = 'T+' + minsOffset + 'm \u00b7 ' + hh + ':' + mm + ' UTC';
+    });
+  }
+  updatePipelineETAs();
+
+  // ── Intersection Observer for fade-in ────────────
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  // ── Auto-refresh (every 60 seconds) ──────────────
+  setInterval(function() {
+    updateLastUpdated();
+    updateArticleTimestamps();
+    updatePipelineETAs();
+    // Slightly vary the metric findings to show liveness
+    var findingsEl = document.getElementById('metricFindings');
+    if (findingsEl) {
+      var base = 47;
+      var jitter = Math.floor(Math.random() * 5) - 2;
+      findingsEl.textContent = base + jitter;
+    }
+  }, 60000);
+
+})();
+</script>
+
+</body>
+</html>
