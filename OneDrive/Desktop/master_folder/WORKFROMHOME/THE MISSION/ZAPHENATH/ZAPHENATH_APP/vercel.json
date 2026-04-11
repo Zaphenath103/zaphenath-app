@@ -15,6 +15,7 @@
     { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
     { "src": "/og-image.html", "dest": "/og-image.html" },
     { "src": "/og-image.svg", "dest": "/og-image.svg" },
+    { "src": "/og-image.png", "dest": "/og-image.png" },
     { "src": "/public/(.*)", "dest": "/public/$1" }
   ]
 }

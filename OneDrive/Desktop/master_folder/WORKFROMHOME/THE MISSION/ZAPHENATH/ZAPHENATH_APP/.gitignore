@@ -1,0 +1,17 @@
+# Only track the site files
+*
+!index.html
+!404.html
+!contact.html
+!privacy.html
+!terms.html
+!robots.txt
+!sitemap.xml
+!vercel.json
+!og-image.png
+!og-image.svg
+!public/
+!public/**
+!legal/
+!legal/**
+!.gitignore
