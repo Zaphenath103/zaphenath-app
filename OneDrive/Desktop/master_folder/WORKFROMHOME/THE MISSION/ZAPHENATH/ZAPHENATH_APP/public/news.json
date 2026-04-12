@@ -1,8 +1,263 @@
 {
-  "generated_at": "2026-04-11T04:02:53.961653+00:00",
+  "generated_at": "2026-04-11T14:45:11.074944+00:00",
   "total": 50,
   "relevance_min": 85,
   "stories": [
+    {
+      "id": "reddit::cybersecurity_1sict0o",
+      "source": "reddit",
+      "industry": "security",
+      "title": "Mythos/AI leading to increase in roles",
+      "url": "https://reddit.com/r/cybersecurity/comments/1sict0o/mythosai_leading_to_increase_in_roles/",
+      "ts": "2026-04-11T07:53:25.829032+00:00",
+      "relevance": 85.0,
+      "sentiment": "neutral",
+      "tags": [
+        "security",
+        "cybersecurity"
+      ],
+      "indexed_at": "2026-04-11T07:54:13.652952+00:00"
+    },
+    {
+      "id": "reddit::startups_1sicpge",
+      "source": "reddit",
+      "industry": "fintech",
+      "title": "Is a profitable start-up ALWAYS endless hours and stress? Any experiences with a better WLB growth? I will not promote",
+      "url": "https://reddit.com/r/startups/comments/1sicpge/is_a_profitable_startup_always_endless_hours_and/",
+      "ts": "2026-04-11T07:46:47.851634+00:00",
+      "relevance": 85.0,
+      "sentiment": "neutral",
+      "tags": [
+        "fintech",
+        "startups"
+      ],
+      "indexed_at": "2026-04-11T07:47:17.926827+00:00"
+    },
+    {
+      "id": "reddit::cybersecurity_1sicau2",
+      "source": "reddit",
+      "industry": "security",
+      "title": "How worried or angry are you about Mythos?",
+      "url": "https://reddit.com/r/cybersecurity/comments/1sicau2/how_worried_or_angry_are_you_about_mythos/",
+      "ts": "2026-04-11T07:20:47.570827+00:00",
+      "relevance": 85.0,
+      "sentiment": "neutral",
+      "tags": [
+        "security",
+        "cybersecurity"
+      ],
+      "indexed_at": "2026-04-11T07:21:40.311334+00:00"
+    },
+    {
+      "id": "reddit::cybersecurity_1sic7lt",
+      "source": "reddit",
+      "industry": "security",
+      "title": "Feedback on Cybersecurity Portfolio",
+      "url": "https://reddit.com/r/cybersecurity/comments/1sic7lt/feedback_on_cybersecurity_portfolio/",
+      "ts": "2026-04-11T07:20:47.570872+00:00",
+      "relevance": 85.0,
+      "sentiment": "neutral",
+      "tags": [
+        "security",
+        "cybersecurity"
+      ],
+      "indexed_at": "2026-04-11T07:21:40.311334+00:00"
+    },
+    {
+      "id": "reddit::MachineLearning_1sfuwqh",
+      "source": "reddit",
+      "industry": "ai",
+      "title": "[P] Building a LLM from scratch with Mary Shelley's \"Frankenstein\" (on Kaggle)",
+      "url": "https://reddit.com/r/MachineLearning/comments/1sfuwqh/p_building_a_llm_from_scratch_with_mary_shelleys/",
+      "ts": "2026-04-11T07:13:08.672446+00:00",
+      "relevance": 95.0,
+      "sentiment": "neutral",
+      "tags": [
+        "ai",
+        "machinelearning"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::netsec_1siafhk",
+      "source": "reddit",
+      "industry": "security",
+      "title": "Reverse Engineering a Multi Stage File Format Steganography Chain of the TeamPCP Telnyx Campaign",
+      "url": "https://reddit.com/r/netsec/comments/1siafhk/reverse_engineering_a_multi_stage_file_format/",
+      "ts": "2026-04-11T07:13:20.448424+00:00",
+      "relevance": 90.0,
+      "sentiment": "neutral",
+      "tags": [
+        "security",
+        "netsec"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::technology_1si9dom",
+      "source": "reddit",
+      "industry": "tech",
+      "title": "Californians sue over AI tool that records doctor visits | Plaintiffs say transcription tool processed confidential chats offsite.",
+      "url": "https://reddit.com/r/technology/comments/1si9dom/californians_sue_over_ai_tool_that_records_doctor/",
+      "ts": "2026-04-11T07:14:04.578992+00:00",
+      "relevance": 85.3,
+      "sentiment": "neutral",
+      "tags": [
+        "tech",
+        "technology"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::technology_1si5bwp",
+      "source": "reddit",
+      "industry": "tech",
+      "title": "The Chilling Role of ChatGPT in Mass Shootings and Other Violence - Several attacks involving OpenAI\u2019s chatbot\u2014including Tumbler Ridge and FSU\u2014raise urgent questions about the technology.",
+      "url": "https://reddit.com/r/technology/comments/1si5bwp/the_chilling_role_of_chatgpt_in_mass_shootings/",
+      "ts": "2026-04-11T07:14:04.579133+00:00",
+      "relevance": 85.2,
+      "sentiment": "neutral",
+      "tags": [
+        "tech",
+        "technology"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::cybersecurity_1sibhjd",
+      "source": "reddit",
+      "industry": "security",
+      "title": "Mythos announcement hit different if you work in cyber",
+      "url": "https://reddit.com/r/cybersecurity/comments/1sibhjd/mythos_announcement_hit_different_if_you_work_in/",
+      "ts": "2026-04-11T07:13:31.755807+00:00",
+      "relevance": 85.1,
+      "sentiment": "neutral",
+      "tags": [
+        "security",
+        "cybersecurity"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::cybersecurity_1si8z49",
+      "source": "reddit",
+      "industry": "security",
+      "title": "ShinyHunters Claims Rockstar Games Breach via Snowflake Integration",
+      "url": "https://reddit.com/r/cybersecurity/comments/1si8z49/shinyhunters_claims_rockstar_games_breach_via/",
+      "ts": "2026-04-11T07:13:31.755940+00:00",
+      "relevance": 85.1,
+      "sentiment": "neutral",
+      "tags": [
+        "security",
+        "cybersecurity"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::cybersecurity_1si9v97",
+      "source": "reddit",
+      "industry": "security",
+      "title": "Splunk experience",
+      "url": "https://reddit.com/r/cybersecurity/comments/1si9v97/splunk_experience/",
+      "ts": "2026-04-11T07:13:31.756120+00:00",
+      "relevance": 85.0,
+      "sentiment": "neutral",
+      "tags": [
+        "security",
+        "cybersecurity"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::cybersecurity_1si8oui",
+      "source": "reddit",
+      "industry": "security",
+      "title": "How do you keep email safe in a remote work setup?",
+      "url": "https://reddit.com/r/cybersecurity/comments/1si8oui/how_do_you_keep_email_safe_in_a_remote_work_setup/",
+      "ts": "2026-04-11T07:13:31.756216+00:00",
+      "relevance": 85.0,
+      "sentiment": "neutral",
+      "tags": [
+        "security",
+        "cybersecurity"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::cybersecurity_1si98ki",
+      "source": "reddit",
+      "industry": "security",
+      "title": "Is it more secure to use a secondary, low-use phone number for Gmail account recovery compared to a primary number?",
+      "url": "https://reddit.com/r/cybersecurity/comments/1si98ki/is_it_more_secure_to_use_a_secondary_lowuse_phone/",
+      "ts": "2026-04-11T07:13:31.756344+00:00",
+      "relevance": 85.0,
+      "sentiment": "neutral",
+      "tags": [
+        "security",
+        "cybersecurity"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::electricvehicles_1sibc7n",
+      "source": "reddit",
+      "industry": "auto",
+      "title": "Subaru March 2026 Sales are Down from March 2025 for Every Model Except the Electric Solterra",
+      "url": "https://reddit.com/r/electricvehicles/comments/1sibc7n/subaru_march_2026_sales_are_down_from_march_2025/",
+      "ts": "2026-04-11T07:13:50.989552+00:00",
+      "relevance": 85.0,
+      "sentiment": "neutral",
+      "tags": [
+        "auto",
+        "electricvehicles"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::startups_1si9u66",
+      "source": "reddit",
+      "industry": "fintech",
+      "title": "I've built features no one used, so i changed how i validate them [I will not promote]",
+      "url": "https://reddit.com/r/startups/comments/1si9u66/ive_built_features_no_one_used_so_i_changed_how_i/",
+      "ts": "2026-04-11T07:13:53.961431+00:00",
+      "relevance": 85.0,
+      "sentiment": "neutral",
+      "tags": [
+        "fintech",
+        "startups"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::startups_1si9t3d",
+      "source": "reddit",
+      "industry": "fintech",
+      "title": "I kept building features no one used so I changed how to validate them [I will not promote]",
+      "url": "https://reddit.com/r/startups/comments/1si9t3d/i_kept_building_features_no_one_used_so_i_changed/",
+      "ts": "2026-04-11T07:13:53.961571+00:00",
+      "relevance": 85.0,
+      "sentiment": "neutral",
+      "tags": [
+        "fintech",
+        "startups"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
+    {
+      "id": "reddit::startups_1si9o07",
+      "source": "reddit",
+      "industry": "fintech",
+      "title": "Equity vs contribution mismatch in a small engineering firm \u2013 I will not promote",
+      "url": "https://reddit.com/r/startups/comments/1si9o07/equity_vs_contribution_mismatch_in_a_small/",
+      "ts": "2026-04-11T07:13:53.961614+00:00",
+      "relevance": 85.0,
+      "sentiment": "neutral",
+      "tags": [
+        "fintech",
+        "startups"
+      ],
+      "indexed_at": "2026-04-11T07:14:27.260740+00:00"
+    },
     {
       "id": "reddit::startups_1sh30jf",
       "source": "reddit",
@@ -495,261 +750,6 @@
       "tags": [
         "ai",
         "machinelearning"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::MachineLearning_1sgyoof",
-      "source": "reddit",
-      "industry": "ai",
-      "title": "Detecting mirrored selfie images: OCR the best way? [D]",
-      "url": "https://reddit.com/r/MachineLearning/comments/1sgyoof/detecting_mirrored_selfie_images_ocr_the_best_way/",
-      "ts": "2026-04-11T03:17:19.822029+00:00",
-      "relevance": 95.0,
-      "sentiment": "neutral",
-      "tags": [
-        "ai",
-        "machinelearning"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::MachineLearning_1sgtaqi",
-      "source": "reddit",
-      "industry": "ai",
-      "title": "Looking for Feedback &amp; Improvement Ideas[P]",
-      "url": "https://reddit.com/r/MachineLearning/comments/1sgtaqi/looking_for_feedback_improvement_ideasp/",
-      "ts": "2026-04-11T03:17:19.822044+00:00",
-      "relevance": 95.0,
-      "sentiment": "neutral",
-      "tags": [
-        "ai",
-        "machinelearning"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::MachineLearning_1sg188m",
-      "source": "reddit",
-      "industry": "ai",
-      "title": "ICML 2026 am I cooked? [D]",
-      "url": "https://reddit.com/r/MachineLearning/comments/1sg188m/icml_2026_am_i_cooked_d/",
-      "ts": "2026-04-11T03:17:19.822055+00:00",
-      "relevance": 95.0,
-      "sentiment": "neutral",
-      "tags": [
-        "ai",
-        "machinelearning"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::MachineLearning_1sfydvx",
-      "source": "reddit",
-      "industry": "ai",
-      "title": "[P] citracer: a small CLI tool to trace where a concept comes from in a citation graph",
-      "url": "https://reddit.com/r/MachineLearning/comments/1sfydvx/p_citracer_a_small_cli_tool_to_trace_where_a/",
-      "ts": "2026-04-11T03:17:19.822073+00:00",
-      "relevance": 95.0,
-      "sentiment": "neutral",
-      "tags": [
-        "ai",
-        "machinelearning"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::technology_1shtdav",
-      "source": "reddit",
-      "industry": "tech",
-      "title": "OpenAI says CEO Sam Altman's house was targeted with a Molotov cocktail",
-      "url": "https://reddit.com/r/technology/comments/1shtdav/openai_says_ceo_sam_altmans_house_was_targeted/",
-      "ts": "2026-04-11T03:18:01.655681+00:00",
-      "relevance": 92.8,
-      "sentiment": "neutral",
-      "tags": [
-        "tech",
-        "technology"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::technology_1shd0fx",
-      "source": "reddit",
-      "industry": "tech",
-      "title": "OpenAI Backs Bill That Would Limit Liability for AI-Enabled Mass Deaths or Financial Disasters",
-      "url": "https://reddit.com/r/technology/comments/1shd0fx/openai_backs_bill_that_would_limit_liability_for/",
-      "ts": "2026-04-11T03:18:01.655965+00:00",
-      "relevance": 92.8,
-      "sentiment": "neutral",
-      "tags": [
-        "tech",
-        "technology"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::technology_1shol40",
-      "source": "reddit",
-      "industry": "tech",
-      "title": "France to ditch Windows for Linux to reduce reliance on US tech",
-      "url": "https://reddit.com/r/technology/comments/1shol40/france_to_ditch_windows_for_linux_to_reduce/",
-      "ts": "2026-04-11T03:18:01.655729+00:00",
-      "relevance": 92.0,
-      "sentiment": "neutral",
-      "tags": [
-        "tech",
-        "technology"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::technology_1shjrv1",
-      "source": "reddit",
-      "industry": "tech",
-      "title": "YouTube is Raising the Price of All Premium Plans in the US / The price hikes will come into effect in June, and the individual Plan will cost $15.99/month",
-      "url": "https://reddit.com/r/technology/comments/1shjrv1/youtube_is_raising_the_price_of_all_premium_plans/",
-      "ts": "2026-04-11T03:18:01.655850+00:00",
-      "relevance": 90.8,
-      "sentiment": "neutral",
-      "tags": [
-        "tech",
-        "technology"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::technology_1shjapu",
-      "source": "reddit",
-      "industry": "tech",
-      "title": "Wisconsin city passes nation's first anti-data center referendum",
-      "url": "https://reddit.com/r/technology/comments/1shjapu/wisconsin_city_passes_nations_first_antidata/",
-      "ts": "2026-04-11T03:18:01.655874+00:00",
-      "relevance": 90.7,
-      "sentiment": "neutral",
-      "tags": [
-        "tech",
-        "technology"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::news_1si0zv6",
-      "source": "reddit",
-      "industry": "media",
-      "title": "US appeals court declares 158-year-old home distilling ban unconstitutional",
-      "url": "https://reddit.com/r/news/comments/1si0zv6/us_appeals_court_declares_158yearold_home/",
-      "ts": "2026-04-11T03:17:56.173901+00:00",
-      "relevance": 90.5,
-      "sentiment": "neutral",
-      "tags": [
-        "media",
-        "news"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::datascience_1s9t6nr",
-      "source": "reddit",
-      "industry": "ai",
-      "title": "Do interviews also take over your personal life?",
-      "url": "https://reddit.com/r/datascience/comments/1s9t6nr/do_interviews_also_take_over_your_personal_life/",
-      "ts": "2026-04-11T03:18:07.248542+00:00",
-      "relevance": 90.3,
-      "sentiment": "neutral",
-      "tags": [
-        "ai",
-        "datascience"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::netsec_1sgu2dn",
-      "source": "reddit",
-      "industry": "security",
-      "title": "Threat Model Discrepancy: Google Password Manager leaks cleartext passwords via Task Switcher (Won't Fix) - Violates German BSI Standards",
-      "url": "https://reddit.com/r/netsec/comments/1sgu2dn/threat_model_discrepancy_google_password_manager/",
-      "ts": "2026-04-11T03:17:26.697931+00:00",
-      "relevance": 90.2,
-      "sentiment": "neutral",
-      "tags": [
-        "security",
-        "netsec"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::netsec_1sfugo9",
-      "source": "reddit",
-      "industry": "security",
-      "title": "Russian GRU Exploiting Vulnerable Routers to Steal Sensitive Information 07 April 2026",
-      "url": "https://reddit.com/r/netsec/comments/1sfugo9/russian_gru_exploiting_vulnerable_routers_to/",
-      "ts": "2026-04-11T03:17:26.697965+00:00",
-      "relevance": 90.2,
-      "sentiment": "neutral",
-      "tags": [
-        "security",
-        "netsec"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::datascience_1sfsijd",
-      "source": "reddit",
-      "industry": "ai",
-      "title": "Built a dashboard to analyze how AI skills are showing up in data science job postings (open source)",
-      "url": "https://reddit.com/r/datascience/comments/1sfsijd/built_a_dashboard_to_analyze_how_ai_skills_are/",
-      "ts": "2026-04-11T03:18:07.248216+00:00",
-      "relevance": 90.2,
-      "sentiment": "neutral",
-      "tags": [
-        "ai",
-        "datascience"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::datascience_1sbgr9y",
-      "source": "reddit",
-      "industry": "ai",
-      "title": "How to prepare for ML system design interview as a data scientist?",
-      "url": "https://reddit.com/r/datascience/comments/1sbgr9y/how_to_prepare_for_ml_system_design_interview_as/",
-      "ts": "2026-04-11T03:18:07.248497+00:00",
-      "relevance": 90.2,
-      "sentiment": "neutral",
-      "tags": [
-        "ai",
-        "datascience"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::netsec_1sflk3t",
-      "source": "reddit",
-      "industry": "security",
-      "title": "Spooler Alert: Remote Unauth'd RCE-to-root Chain in CUPS",
-      "url": "https://reddit.com/r/netsec/comments/1sflk3t/spooler_alert_remote_unauthd_rcetoroot_chain_in/",
-      "ts": "2026-04-11T03:17:26.697986+00:00",
-      "relevance": 90.1,
-      "sentiment": "neutral",
-      "tags": [
-        "security",
-        "netsec"
-      ],
-      "indexed_at": "2026-04-11T03:18:29.711664+00:00"
-    },
-    {
-      "id": "reddit::netsec_1sep4hy",
-      "source": "reddit",
-      "industry": "security",
-      "title": "Detecting CI/CD Supply Chain Attacks with Canary Credentials",
-      "url": "https://reddit.com/r/netsec/comments/1sep4hy/detecting_cicd_supply_chain_attacks_with_canary/",
-      "ts": "2026-04-11T03:17:26.698049+00:00",
-      "relevance": 90.1,
-      "sentiment": "neutral",
-      "tags": [
-        "security",
-        "netsec"
       ],
       "indexed_at": "2026-04-11T03:18:29.711664+00:00"
     }
