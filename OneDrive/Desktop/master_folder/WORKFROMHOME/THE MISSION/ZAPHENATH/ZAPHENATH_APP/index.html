@@ -108,26 +108,69 @@ section{padding:6rem 2rem;position:relative}
 .ph-n{color:var(--gray);font-size:.7rem;width:60px;text-align:right;font-family:var(--font-mono)}
 .ph-v{font-family:var(--font-mono);font-size:.7rem;color:var(--blue);width:30px}
 .d-note{font-family:var(--font-mono);font-size:.65rem;color:var(--gray);margin-top:1rem}
+/* ── ZaphNews Magazine Grid ──────────────────────────────── */
 #news-sec{background:var(--navy-light)}
-.ng{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
-.nc{background:var(--navy);border:1px solid var(--blue-dim);border-radius:10px;padding:1.2rem;transition:all .3s}
-.nc:hover{border-color:var(--blue);transform:translateY(-2px)}
-.nc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
-.nt{font-family:var(--font-mono);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;padding:.2rem .5rem;border-radius:3px}
-.nt.ai{background:rgba(0,180,255,.1);color:var(--blue)}
-.nt.tech,.nt.tech_media{background:rgba(123,47,247,.1);color:#a78bfa}
-.nt.fintech{background:rgba(34,197,94,.1);color:var(--green)}
-.nt.hiring{background:rgba(245,158,11,.1);color:var(--amber)}
-.nt.govtech{background:rgba(239,68,68,.1);color:var(--red)}
-.nt.auto{background:rgba(0,229,255,.1);color:var(--cyan)}
-.nt.security{background:rgba(239,68,68,.08);color:#fca5a5}
-.nt.realestate{background:rgba(34,197,94,.08);color:#86efac}
-.nt.media{background:rgba(123,47,247,.08);color:#c4b5fd}
-.nr{font-family:var(--font-mono);font-size:.65rem;color:var(--blue);font-weight:700}
-.ntitle{font-size:.875rem;color:var(--white);line-height:1.45;display:block;text-decoration:none;margin-bottom:.5rem}
+.nbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.75rem}
+.nbar-left{display:flex;align-items:center;gap:1rem}
+.nlive{display:flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.65rem;color:var(--green);letter-spacing:1px}
+.nlive-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-g 1.4s ease-in-out infinite}
+@keyframes pulse-g{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
+.nfilters{display:flex;gap:.4rem;flex-wrap:wrap}
+.nfbtn{font-family:var(--font-mono);font-size:.6rem;letter-spacing:1px;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;border:1px solid var(--blue-dim);color:var(--gray);cursor:pointer;transition:all .2s;background:transparent}
+.nfbtn:hover,.nfbtn.active{background:rgba(0,180,255,.12);border-color:var(--blue);color:var(--blue)}
+/* grid layout */
+.ng{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:900px){.ng{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.ng{grid-template-columns:1fr}}
+/* hero card */
+.nc.hero{grid-column:span 2}
+@media(max-width:900px){.nc.hero{grid-column:span 2}}
+@media(max-width:560px){.nc.hero{grid-column:span 1}}
+/* card base */
+.nc{background:var(--navy);border:1px solid var(--blue-dim);border-radius:12px;overflow:hidden;transition:all .3s;cursor:pointer;display:flex;flex-direction:column}
+.nc:hover{border-color:rgba(0,180,255,.5);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+/* image area */
+.nc-img{position:relative;overflow:hidden;flex-shrink:0}
+.nc.hero .nc-img{height:200px}
+.nc:not(.hero) .nc-img{height:130px}
+.nc-img-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative}
+.nc-img-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(10,14,39,.9))}
+/* industry gradients */
+.ni-ai{background:linear-gradient(135deg,#001a2e,#003d5c,#00b4ff22)}
+.ni-security{background:linear-gradient(135deg,#1a0000,#3d0000,#ef444422)}
+.ni-fintech{background:linear-gradient(135deg,#001a0a,#003d1a,#22c55e22)}
+.ni-hiring{background:linear-gradient(135deg,#1a1000,#3d2600,#f59e0b22)}
+.ni-govtech{background:linear-gradient(135deg,#1a0000,#3d0a00,#f9731622)}
+.ni-tech{background:linear-gradient(135deg,#0d0022,#1a0044,#7b2ff722)}
+.ni-media{background:linear-gradient(135deg,#1a0011,#3d0022,#ec489922)}
+.ni-auto{background:linear-gradient(135deg,#001a1a,#003d3d,#00e5ff22)}
+.ni-realestate{background:linear-gradient(135deg,#001a08,#003316,#86efac22)}
+.ni-default{background:linear-gradient(135deg,#0a0e27,#111827,#ffffff08)}
+/* overlay badges on image */
+.nc-overlay{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;padding:.6rem .75rem}
+.nt{font-family:var(--font-mono);font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;padding:.2rem .55rem;border-radius:20px;backdrop-filter:blur(8px)}
+.nt.ai{background:rgba(0,180,255,.25);color:#7dd3fc;border:1px solid rgba(0,180,255,.3)}
+.nt.security{background:rgba(239,68,68,.25);color:#fca5a5;border:1px solid rgba(239,68,68,.3)}
+.nt.fintech{background:rgba(34,197,94,.25);color:#86efac;border:1px solid rgba(34,197,94,.3)}
+.nt.hiring{background:rgba(245,158,11,.25);color:#fde68a;border:1px solid rgba(245,158,11,.3)}
+.nt.govtech{background:rgba(249,115,22,.25);color:#fdba74;border:1px solid rgba(249,115,22,.3)}
+.nt.tech,.nt.tech_media{background:rgba(123,47,247,.25);color:#c4b5fd;border:1px solid rgba(123,47,247,.3)}
+.nt.media{background:rgba(236,72,153,.25);color:#f9a8d4;border:1px solid rgba(236,72,153,.3)}
+.nt.auto{background:rgba(0,229,255,.25);color:#67e8f9;border:1px solid rgba(0,229,255,.3)}
+.nt.realestate{background:rgba(34,197,94,.2);color:#86efac;border:1px solid rgba(34,197,94,.25)}
+.nt.default{background:rgba(255,255,255,.1);color:var(--gray);border:1px solid rgba(255,255,255,.15)}
+.nr{font-family:var(--font-mono);font-size:.6rem;color:#fbbf24;font-weight:700;background:rgba(0,0,0,.5);padding:.2rem .45rem;border-radius:20px;backdrop-filter:blur(8px)}
+/* card body */
+.nc-body{padding:.9rem 1rem 1rem;flex:1;display:flex;flex-direction:column;gap:.5rem}
+.ntitle{font-size:.88rem;color:var(--white);line-height:1.5;display:block;text-decoration:none;font-weight:600;flex:1}
+.nc.hero .ntitle{font-size:1.05rem}
 .ntitle:hover{color:var(--blue)}
-.nmeta{font-size:.7rem;color:var(--gray)}
-.nload{text-align:center;padding:3rem;color:var(--gray);font-family:var(--font-mono);font-size:.8rem}
+.nc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.05)}
+.nsrc{font-family:var(--font-mono);font-size:.65rem;color:var(--gray);display:flex;align-items:center;gap:.35rem}
+.nsrc-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.nage{font-family:var(--font-mono);font-size:.6rem;color:rgba(136,146,176,.6)}
+.nload{text-align:center;padding:4rem;color:var(--gray);font-family:var(--font-mono);font-size:.8rem;grid-column:1/-1}
+.nmeta{display:none}
 #network-sec{background:var(--navy)}
 .net-wrap{background:var(--navy-light);border:1px solid var(--blue-dim);border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .net-tb{display:flex;align-items:center;gap:.5rem;padding:.75rem 1.25rem;background:rgba(0,180,255,.03);border-bottom:1px solid var(--blue-dim)}
@@ -267,19 +310,25 @@ footer{background:var(--navy-light);border-top:1px solid var(--blue-dim);padding
 
 <section id="news-sec">
   <div class="si">
-    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem">
-      <div>
-        <div class="s-tag">// ZaphNews &mdash; Live Intelligence Feed</div>
-        <h2 class="s-title" style="margin-bottom:0">Breaking Now</h2>
-      </div>
-      <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--gray)">
-        <span style="color:var(--green)">LIVE</span> &bull; relevance &ge;85 &bull; <span id="ncount">--</span> stories &bull; <span id="nts">--</span>
-      </div>
+    <div class="reveal">
+      <div class="s-tag">// ZaphNews &mdash; Live Intelligence Feed</div>
+      <h2 class="s-title" style="margin-bottom:1.5rem">Breaking Now</h2>
     </div>
-    <div class="ng" id="ngrid"><div class="nload">Loading intelligence feed...</div></div>
-    <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--gray);text-align:right;margin-top:1rem">
-      Auto-refreshes every 60s &bull; <span style="color:var(--blue);cursor:pointer" onclick="loadN()">Refresh now</span>
+    <div class="nbar reveal">
+      <div class="nbar-left">
+        <div class="nlive"><span class="nlive-dot"></span>LIVE &bull; <span id="ncount">--</span> stories &bull; <span id="nts">--</span></div>
+        <div class="nfilters" id="nfilters">
+          <button class="nfbtn active" onclick="filterN('all',this)">All</button>
+          <button class="nfbtn" onclick="filterN('ai',this)">AI</button>
+          <button class="nfbtn" onclick="filterN('security',this)">Security</button>
+          <button class="nfbtn" onclick="filterN('fintech',this)">Fintech</button>
+          <button class="nfbtn" onclick="filterN('hiring',this)">Hiring</button>
+          <button class="nfbtn" onclick="filterN('tech',this)">Tech</button>
+        </div>
+      </div>
+      <span style="font-family:var(--font-mono);font-size:.6rem;color:var(--gray);cursor:pointer" onclick="loadN()">&#8635; Refresh</span>
     </div>
+    <div class="ng reveal" id="ngrid"><div class="nload">Loading intelligence feed...</div></div>
   </div>
 </section>
 
@@ -427,21 +476,74 @@ async function loadStats(){
 }
 loadStats();
 
-// ZaphNews feed
+// ZaphNews magazine feed
+const IND_EMOJI={ai:'🤖',security:'🔒',fintech:'💹',hiring:'💼',govtech:'🏛',tech:'⚡',media:'📡',auto:'🚗',realestate:'🏢',default:'🌐'};
+const IND_CLASS={ai:'ni-ai',security:'ni-security',fintech:'ni-fintech',hiring:'ni-hiring',govtech:'ni-govtech',tech:'ni-tech',media:'ni-media',auto:'ni-auto',realestate:'ni-realestate'};
+let _allStories=[];let _activeFilter='all';
+
+function _age(iso){
+  if(!iso)return'';
+  const d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/60000);
+  if(diff<1)return'just now';if(diff<60)return diff+'m ago';
+  const h=Math.floor(diff/60);if(h<24)return h+'h ago';
+  return Math.floor(h/24)+'d ago';
+}
+
+function _card(s,hero){
+  const ind=(s.industry||'default').replace(/[^a-z]/g,'').toLowerCase();
+  const cls=IND_CLASS[ind]||'ni-default';
+  const em=IND_EMOJI[ind]||IND_EMOJI.default;
+  const src=(s.source||'').replace('_',' ');
+  const title=(s.title||'').slice(0,hero?120:90);
+  const rel=Math.round(s.relevance||0);
+  const relCol=rel>=90?'#22c55e':rel>=80?'#fbbf24':'#94a3b8';
+  return`<div class="nc${hero?' hero':''}">
+    <div class="nc-img">
+      <div class="nc-img-bg ${cls}">${em}</div>
+      <div class="nc-overlay">
+        <span class="nt ${ind}">${ind}</span>
+        <span class="nr" style="color:${relCol}">${rel}</span>
+      </div>
+    </div>
+    <div class="nc-body">
+      <a class="ntitle" href="${s.url||'#'}" target="_blank" rel="noopener">${title}</a>
+      <div class="nc-foot">
+        <span class="nsrc"><span class="nsrc-dot"></span>${src}</span>
+        <span class="nage">${_age(s.indexed_at||s.ts)}</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+function _render(stories){
+  const g=document.getElementById('ngrid');
+  if(!stories.length){g.innerHTML='<div class="nload">No stories for this filter.</div>';return;}
+  g.innerHTML=stories.slice(0,12).map((s,i)=>_card(s,i===0)).join('');
+}
+
+function filterN(f,btn){
+  _activeFilter=f;
+  document.querySelectorAll('.nfbtn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  const filtered=f==='all'?_allStories:_allStories.filter(s=>(s.industry||'').toLowerCase()===f||(s.industry||'').toLowerCase().startsWith(f));
+  _render(filtered);
+}
+
 async function loadN(){
   const g=document.getElementById('ngrid');
+  const BASE=location.protocol==='file:'?'https://zaphenath.app':'';
   try{
-    const r=await fetch('/news.json?t='+Date.now());if(!r.ok)throw 0;
+    const r=await fetch(BASE+'/news.json?t='+Date.now());if(!r.ok)throw 0;
     const d=await r.json();
-    document.getElementById('ncount').textContent=d.total||0;
+    document.getElementById('ncount').textContent=(d.total||0).toLocaleString();
     document.getElementById('nts').textContent=(d.generated_at||'').slice(11,16)+' UTC';
-    const st=(d.stories||[]).slice(0,12);
-    if(!st.length){g.innerHTML='<div class="nload">Feed warming up...</div>';return;}
-    g.innerHTML=st.map(s=>{
-      const ind=s.industry||'tech';
-      return`<div class="nc"><div class="nc-top"><span class="nt ${ind}">${ind}</span><span class="nr">${Math.round(s.relevance||0)}</span></div><a class="ntitle" href="${s.url||'#'}" target="_blank" rel="noopener">${(s.title||'').slice(0,110)}</a><div class="nmeta">${s.source||''} &bull; ${(s.indexed_at||'').slice(0,16).replace('T',' ')}</div></div>`;
-    }).join('');
-  }catch(e){g.innerHTML='<div class="nload">Intel feed loading... (check back in 60s)</div>';}
+    _allStories=d.stories||[];
+    if(!_allStories.length){g.innerHTML='<div class="nload">Feed warming up...</div>';return;}
+    filterN(_activeFilter,null);
+  }catch(e){
+    if(_allStories.length){filterN(_activeFilter,null);}
+    else{g.innerHTML='<div class="nload" style="font-size:.75rem">Intel feed loading&hellip; <a href="https://zaphenath.app" style="color:var(--blue)">view live</a></div>';}
+  }
 }
 loadN();setInterval(loadN,60000);
 
